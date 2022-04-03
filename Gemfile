@@ -16,6 +16,10 @@ gem 'puma', '~> 5.6.4'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Routes
+gem 'babosa', '~> 2.0.0'
+gem 'friendly_id', '~> 5.4.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
