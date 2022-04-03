@@ -20,6 +20,9 @@ gem 'puma', '~> 5.6.4'
 gem 'babosa', '~> 2.0.0'
 gem 'friendly_id', '~> 5.4.2'
 
+# Act as extensions
+gem 'acts_as_list', '~> 1.0.4'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

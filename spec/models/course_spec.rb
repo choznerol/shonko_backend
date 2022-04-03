@@ -1,9 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
+  describe 'associations' do
+    it { should have_many(:sections).dependent(:delete_all) }
+  end
+
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:teacher_name) }
+  end
+
+  describe 'nested_attributes' do
+    it { should accept_nested_attributes_for(:sections).allow_destroy(true) }
   end
 
   describe '#name_and_date_of_today' do
