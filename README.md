@@ -9,16 +9,21 @@ Things you may want to cover:
   - 2.7.4
 - Dependencies
   - Routes
-    - FriendlyId + Babosa
+    - `friendly_id` + `babosa`
       - For semantic url resource parameters(with ASCII support).
+  - Act as extensions
+    - gem 'acts_as_list'
+      - For sorting data with simple API
+      - I actually prefer some other approaches, for example, using `float` column to store `position`.
+        - `(previous.position + next.position) / 2` is a super simple and performant solution for sorting. However, considering the character of this project, I tend to adapt off-the-shelf solution.
   - Test
-    - factory_bot
+    - `factory_bot`
       - Adapt `factory pattern` for building testing(or development) records in ease.
-    - database_cleaner
+    - `database_cleaner-active_record`
       - Truncate database for each tests, make sure each tests are independent.
-    - shoulda-matchers
+    - `shoulda-matchers`
       - Simple one-liner test syntax.
-    - faker
+    - `faker`
       - Random data generation.
 
 - Configuration

@@ -32,6 +32,6 @@ class API::V1::CoursesController < API::BaseController
   end
 
   def course_params
-    params.require(:course).permit(:name, :teacher_name, :description)
+    params.require(:course).permit(:name, :teacher_name, :description, sections_attributes: [:id, :name, :position, :_destroy])
   end
 end
