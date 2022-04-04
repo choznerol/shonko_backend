@@ -30,12 +30,18 @@ RSpec.describe 'API::V1::Courses', type: :request do
   describe 'POST /api/v1/courses' do
     context 'with valid parameters' do
       it 'renders a JSON response with the new course' do
-        attributes = attributes_for(:course).merge(sections_attributes: [attributes_for(:section)])
+        attributes =
+          attributes_for(:course).merge(
+            sections_attributes: [attributes_for(:section).merge(
+              lessons_attributes: [attributes_for(:lesson)]
+            )]
+          )
         expect do
           post api_v1_courses_url,
                params: { course: attributes }, as: :json
         end.to change(Course, :count).by(1)
            .and change(Section, :count).by(1)
+           .and change(Lesson, :count).by(1)
         expect(response).to have_http_status(201)
         expect(response.content_type).to match(a_string_including('application/json'))
       end
@@ -68,7 +74,12 @@ RSpec.describe 'API::V1::Courses', type: :request do
     context 'with valid parameters' do
       it 'updates the requested course and responds with http status 200' do
         course = create(:course)
-        attributes = attributes_for(:course).merge(sections_attributes: [attributes_for(:section)])
+        attributes =
+          attributes_for(:course).merge(
+            sections_attributes: [attributes_for(:section).merge(
+              lessons_attributes: [attributes_for(:lesson)]
+            )]
+          )
         patch api_v1_course_url(course), params: { course: attributes }, as: :json
         expect(response).to have_http_status(200)
         expect(response.content_type).to match(a_string_including('application/json'))
@@ -98,10 +109,12 @@ RSpec.describe 'API::V1::Courses', type: :request do
 
     it 'destroys the requested course' do
       course = create(:course)
-      create(:section, course: course)
+      section = create(:section, course: course)
+      create(:lesson, section: section)
       expect { delete api_v1_course_url(course), as: :json }
         .to change(Course, :count).by(-1)
         .and change(Section, :count).by(-1)
+        .and change(Lesson, :count).by(-1)
     end
   end
 end

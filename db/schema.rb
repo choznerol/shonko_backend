@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_102934) do
+ActiveRecord::Schema.define(version: 2022_04_04_072910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2022_04_03_102934) do
     t.index ["slug"], name: "index_courses_on_slug", unique: true
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "content", null: false
+    t.integer "position", default: 0, null: false
+    t.bigint "section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_lessons_on_name"
+    t.index ["section_id", "name"], name: "index_lessons_on_section_id_and_name"
+    t.index ["section_id", "position"], name: "index_lessons_on_section_id_and_position"
+    t.index ["section_id"], name: "index_lessons_on_section_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "name", null: false
     t.integer "position", default: 0, null: false
@@ -36,5 +50,6 @@ ActiveRecord::Schema.define(version: 2022_04_03_102934) do
     t.index ["course_id"], name: "index_sections_on_course_id"
   end
 
+  add_foreign_key "lessons", "sections"
   add_foreign_key "sections", "courses"
 end

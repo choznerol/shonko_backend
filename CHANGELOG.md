@@ -4,6 +4,8 @@
     - `rails db:migrate`
   - [4-user-can-manage-courses-with-sections](https://trello.com/c/GOKlj5sG)
     - `rails db:migrate`
+  - [5-user-can-manage-courses-with-lessons](https://trello.com/c/W2Z7m1At)
+    - `rails db:migrate`
 - Improvements
 - Bug fixes
 - Growth

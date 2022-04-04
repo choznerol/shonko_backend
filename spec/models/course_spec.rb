@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Course, type: :model do
   describe 'associations' do
-    it { should have_many(:sections).dependent(:delete_all) }
+    it { should have_many(:sections).dependent(:destroy) }
+    it { should have_many(:lessons) }
   end
 
   describe 'validations' do
