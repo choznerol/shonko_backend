@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Section, type: :model do
   describe 'associations' do
     it { should belong_to(:course) }
+    it { should have_many(:lessons).dependent(:delete_all) }
   end
 
   describe 'validations' do
@@ -27,7 +28,9 @@ RSpec.describe Section, type: :model do
         # expect(section).to validate_numericality_of(:position).is_greater_than_or_equal_to(0)
       end
     end
+  end
 
-
+  describe 'nested_attributes' do
+    it { should accept_nested_attributes_for(:lessons).allow_destroy(true) }
   end
 end
