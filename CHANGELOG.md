@@ -11,5 +11,6 @@
 - Bug fixes
 - Growth
 - DevOps
+  - [1-update-readme-and-configure-staging-server](https://trello.com/c/uAkS0B7R)
 - Data update
 - Operation

@@ -7,6 +7,19 @@ Things you may want to cover:
 
 - Ruby version
   - 2.7.4
+- Development configuration:
+  - ```bash
+    # The following instructions assumes that essential tools are configured, e.g. command line tool,git and homebrew
+    $ rbenv install 2.7.4 # Or rvm, or whatever way to install the specified ruby version.
+    $ # Generate development credentials.
+    $ # Since it's a standalone application for now, there are no 3rd party credentials required. Simply generate your own development credentials:
+    $ rails credentials:edit --environment development
+    # Install dependencies
+    $ bundle install
+    # Setup development database
+    $ rails db:setup # equvalent to rails db:migrate since no seed datum are configured
+    # Now the rocket is ready to lift off!
+    $ rails s # or bundle exec puma
 - Dependencies
   - Routes
     - `friendly_id` + `babosa`
@@ -31,7 +44,6 @@ Things you may want to cover:
       - Simple one-liner test syntax.
     - `faker`
       - Random data generation.
-
 - Configuration
   - `master.key`
 - Database creation
@@ -58,4 +70,10 @@ Things you may want to cover:
     - Maintainable
     - Expressive
       - DAMP against DRY: Descriptive and Meaningful phrases
+- Code of conduct:
+  - SOLID
+  - Comments:
+    - Only applies for `FIXME` and `OPTIMIZE`, and they should be attached with follow-up task to resolve them.
 - TODO
+  - [Dockerize application](https://trello.com/c/gXWuLSke/2-dockerize-app)
+  - [CI/CD](https://trello.com/c/1TI6R5G5/8-implement-ci-cd-to-heroku)
