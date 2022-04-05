@@ -53,8 +53,14 @@ Things you may want to cover:
     ![Test pyramid](https://images.thoughtbot.com/rails-test-types-and-the-testing-pyramid/JH3Bd0ZOQaWZllZcE1Mg_rails-test-types.png)
     - Request test as intergration test
       - Covers routes as well.
+    - GraphQL integration test:
+      - Covers all _directly related fields_
+      - Do not cover nested objects
+      - For scheamas that are not fields in root query type, cover the test with accessible objects in the root query type as ingress.
+        - e.g. `course` as the ingress for `sections` and `lessons`
+      - <img width="1068" alt="截圖 2022-04-05 下午7 30 01" src="https://user-images.githubusercontent.com/3314327/161744791-6686f093-a46d-46fa-ad6a-cc0355b9b735.png">
     - Unit test
-  - Priciples:
+  - Principles:
     - Fast
       - Mock behaviors from dependencies. e.g.
         - Mock ORM classes instead of performing real query:
