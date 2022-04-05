@@ -24,6 +24,7 @@ gem 'friendly_id', '~> 5.4.2'
 gem 'acts_as_list', '~> 1.0.4'
 
 # API
+gem 'graphql', '~> 2.0.5'
 gem 'jsonapi-serializer', '~> 2.2.0'
 
 # Use Active Storage variant
@@ -44,6 +45,7 @@ end
 
 group :development do
   gem 'bullet', '~> 7.0.1'
+  gem 'graphiql-rails', '~> 1.8.0'
   gem 'rubocop', '~> 1.26.1'
 end
 
