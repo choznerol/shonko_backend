@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
-
+- Project url: [shonko-backend-app](https://shonko-backend-app.herokuapp.com/api/v1/courses.json)
 - Ruby version
   - 2.7.4
 - Development configuration:

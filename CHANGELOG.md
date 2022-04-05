@@ -9,6 +9,7 @@
 - Improvements
   - [7-respond-sections-and-lessons-datum-with-eager-loading-on-course-index-api-endpoints](https://trello.com/c/J2ivwOIJ)
 - Bug fixes
+  - [9-fix-production-booting-issue](https://trello.com/c/Zp9f1Wzc)
 - Growth
 - DevOps
   - [1-update-readme-and-configure-staging-server](https://trello.com/c/uAkS0B7R)
