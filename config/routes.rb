@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/graphql', to: 'graphql#execute'
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
   namespace :api do
     namespace :v1 do
       resources :courses, param: :slug, except: :edit
