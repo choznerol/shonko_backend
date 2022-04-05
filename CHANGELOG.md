@@ -7,6 +7,7 @@
   - [5-user-can-manage-courses-with-lessons](https://trello.com/c/W2Z7m1At)
     - `rails db:migrate`
 - Improvements
+  - [7-respond-sections-and-lessons-datum-with-eager-loading-on-course-index-api-endpoints](https://trello.com/c/J2ivwOIJ)
 - Bug fixes
 - Growth
 - DevOps

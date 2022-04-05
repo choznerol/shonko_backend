@@ -2,23 +2,23 @@ class API::V1::CoursesController < API::BaseController
   before_action :set_course, only: [:show, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @courses = Course.includes(sections: :lessons)
 
-    render json: @courses
+    render json: CourseSerializer.new(@courses).serializable_hash
   end
 
   def show
-    render json: @course
+    render json: CourseSerializer.new(@course).serializable_hash
   end
 
   def create
     @course = Course.new(course_params)
 
-    render json: @course, status: :created if @course.save!
+    render json: CourseSerializer.new(@course), status: :created if @course.save!
   end
 
   def update
-    render json: @course if @course.update!(course_params)
+    render json: CourseSerializer.new(@course) if @course.update!(course_params)
   end
 
   def destroy

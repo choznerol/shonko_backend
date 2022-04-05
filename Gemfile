@@ -23,6 +23,9 @@ gem 'friendly_id', '~> 5.4.2'
 # Act as extensions
 gem 'acts_as_list', '~> 1.0.4'
 
+# API
+gem 'jsonapi-serializer', '~> 2.2.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -40,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet', '~> 7.0.1'
   gem 'rubocop', '~> 1.26.1'
 end
 

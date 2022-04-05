@@ -16,6 +16,12 @@ Things you may want to cover:
       - For sorting data with simple API
       - I actually prefer some other approaches, for example, using `float` column to store `position`.
         - `(previous.position + next.position) / 2` is a super simple and performant solution for sorting. However, considering the character of this project, I tend to adapt off-the-shelf solution.
+  - API
+    - `jsonapi-serializer`
+      - Small and lightening fast serializer
+  - Development
+    - `bullet`
+      - Detect N+1 query issue
   - Test
     - `factory_bot`
       - Adapt `factory pattern` for building testing(or development) records in ease.

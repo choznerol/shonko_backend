@@ -5,9 +5,11 @@ RSpec.describe 'API::V1::Courses', type: :request do
   describe 'GET /api/v1/courses' do
     it 'renders a successful response' do
       course = create(:course)
+      section = create(:section, course: course)
+      create(:lesson, section: section)
       get api_v1_courses_url, as: :json
       expect(response).to be_successful
-      expect(response.body).to eq([course].to_json)
+      expect(response.body).to eq(CourseSerializer.new([course]).to_json)
     end
   end
 
@@ -20,9 +22,11 @@ RSpec.describe 'API::V1::Courses', type: :request do
     context 'course can be found with given params[:slug]' do
       it 'renders a successful response' do
         course = create(:course)
+        section = create(:section, course: course)
+        create(:lesson, section: section)
         get api_v1_course_url(course), as: :json
         expect(response).to be_successful
-        expect(response.body).to eq(course.to_json)
+        expect(response.body).to eq(CourseSerializer.new(course).to_json)
       end
     end
   end
@@ -44,6 +48,7 @@ RSpec.describe 'API::V1::Courses', type: :request do
            .and change(Lesson, :count).by(1)
         expect(response).to have_http_status(201)
         expect(response.content_type).to match(a_string_including('application/json'))
+        expect(JSON.parse(response.body)).to eq(JSON.parse(CourseSerializer.new(Course.last).serializable_hash.to_json))
       end
     end
 
@@ -83,7 +88,7 @@ RSpec.describe 'API::V1::Courses', type: :request do
         patch api_v1_course_url(course), params: { course: attributes }, as: :json
         expect(response).to have_http_status(200)
         expect(response.content_type).to match(a_string_including('application/json'))
-        expect(JSON.parse(response.body)).to eq(JSON.parse(course.reload.to_json))
+        expect(JSON.parse(response.body)).to eq(JSON.parse(CourseSerializer.new(course.reload).serializable_hash.to_json))
       end
     end
 
