@@ -28,7 +28,8 @@ class API::V1::CoursesController < API::BaseController
   private
 
   def set_course
-    @course = Course.find_by!(slug: params[:slug])
+    # @course = Course.find_by!(slug: params[:slug])
+    @course = Course.includes(sections: :lessons).find_by!(slug: params[:slug])
   end
 
   def course_params
