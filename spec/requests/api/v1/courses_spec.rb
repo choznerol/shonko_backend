@@ -23,8 +23,12 @@ RSpec.describe 'API::V1::Courses', type: :request do
       it 'renders a successful response' do
         course = create(:course)
         section = create(:section, course: course)
+        section_2 = create(:section, course: course)
         create(:lesson, section: section)
-        get api_v1_course_url(course), as: :json
+        create(:lesson, section: section_2)
+        verbose_log do
+          get api_v1_course_url(course), as: :json
+        end
         expect(response).to be_successful
         expect(response.body).to eq(CourseSerializer.new(course).to_json)
       end

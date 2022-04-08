@@ -77,3 +77,16 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+def verbose_log
+  prev_ar_logger = ActiveRecord::Base.logger
+  prev_rails_logger = Rails.logger
+  prev_log_level = Rails.logger.level
+  ActiveRecord::Base.logger = Logger.new($stdout)
+  Rails.logger = Logger.new($stdout)
+  Rails.logger.level = Logger::DEBUG
+  yield
+  ActiveRecord::Base.logger = prev_ar_logger
+  Rails.logger = prev_rails_logger
+  Rails.logger.level = prev_log_level
+end
