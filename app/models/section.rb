@@ -1,6 +1,6 @@
 class Section < ApplicationRecord
   belongs_to :course
-  has_many :lessons, dependent: :delete_all
+  has_many :lessons, ->{ order(position: :asc) }, dependent: :delete_all
   acts_as_list scope: :course, top_of_list: 0
   validates_presence_of :name, :position
   validates_uniqueness_of :position, scope: :course_id

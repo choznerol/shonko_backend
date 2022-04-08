@@ -3,6 +3,6 @@ class CourseSerializer
   attributes :name, :teacher_name, :description
 
   attribute :sections do |course|
-    course.sections.order(position: :asc).map { |section| SectionSerializer.new(section).serializable_hash }
+    course.sections.map { |section| SectionSerializer.new(section).serializable_hash }
   end
 end
